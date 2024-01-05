@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kitchen_manager/data/repositories/firebase_repository.dart';
 import 'package:kitchen_manager/ui/screens/orders/admin_screen.dart';
 import 'package:kitchen_manager/ui/screens/orders/orders_cubit.dart';
+import 'package:kitchen_manager/ui/screens/stock/stock.dart';
+import 'package:kitchen_manager/ui/screens/stock/stock_cubit.dart';
 import 'package:kitchen_manager/utils/colors.dart';
 import 'package:sizer/sizer.dart';
 
@@ -66,6 +68,19 @@ class _AdminDashboardState extends State<AdminDashboard> {
                 SizedBox(
                   height: 20,
                 ),
+                ButtonBox(
+                    title: "Stock",
+                    img: "assets/images/inventory.png",
+                    clickevent: () => {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => BlocProvider(
+                                        create: (context) =>
+                                            StockCubit(Repository()),
+                                        child: StockList(),
+                                      )))
+                        }),
               ],
             ),
           ),
